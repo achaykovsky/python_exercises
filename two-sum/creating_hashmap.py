@@ -13,14 +13,14 @@ def twoSum(nums: List[int], target: int) -> List[int]:
             index_second_element = substraction_results[res][0]
             # avoiding using the same element
             if index_second_element != i:
-                result.append(i)
-                result.append(index_second_element)
+                result = [i, index_second_element]
                 return result
+
     return result
 
 
 if __name__ == '__main__':
     nums = [0, 4, 3, 0]
     target = 0
-    result = twoSum(nums, target)
+    result = twoSum(nums, target)  # the result are the indices of the two numbers
     print(result)
