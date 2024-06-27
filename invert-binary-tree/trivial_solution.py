@@ -12,7 +12,7 @@ def invertTree(root: Optional[TreeNode]) -> Optional[TreeNode]:
     if not root:
         return
 
-    root.right, root.left = root.left, root.right
+    root.right, root.left = root.left, root.right  # flip the right and left nodes
 
     invertTree(root.right)
     invertTree(root.left)
