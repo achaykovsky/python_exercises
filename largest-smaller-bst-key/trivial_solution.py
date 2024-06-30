@@ -1,3 +1,19 @@
+def inorder_traverse(root):
+    nodes_list = []
+
+    def traverse(root, nodes_list):
+        if not root:
+            return
+
+        traverse(root.left, nodes_list)
+        nodes_list.append(root)
+        traverse(root.right, nodes_list)
+
+    traverse(root, nodes_list)
+
+    return nodes_list
+
+
 # A node
 class Node:
 
@@ -16,19 +32,21 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    # we are looking for one number that satisfies our condition, and we will go through only one path!
-
-    # Time complexity: O(nlogn) for balanced tree. Otherwise: O(n)
-    # Space Complexity: O(1)
+    # Time complexity: O(n)
+    # Space Complexity: O(n)
     def find_largest_smaller_key(self, num):
         result = -1
+        nodes_list = inorder_traverse(self.root)
+        nodes_values = []
 
-        while self.root:  # while there is root node
-            if self.root.key < num:  # looking for the number smaller than we have
-                result = self.root.key  # storing the last number we see
-                self.root = self.root.right  # check if there is a bigger number on the right side
-            else:  # the key is bigger than the number we look for
-                self.root = self.root.left  # check if there is a bigger number on the left side
+        for node in nodes_list:
+            nodes_values.append(node.key)
+
+        for i, value in enumerate(nodes_values):
+            if num == nodes_values[i] and i >= 1:
+                result = nodes_values[i - 1]
+                break
+
         return result
 
     # Given a binary search tree and a number, inserts a
@@ -81,6 +99,6 @@ if __name__ == '__main__':
     bst.insert(11)
     bst.insert(14)
 
-    result = bst.find_largest_smaller_key(14)
+    result = bst.find_largest_smaller_key(25)
 
     print(result)
