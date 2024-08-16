@@ -33,7 +33,7 @@ def create_python_trivial_solution(path):
     result = solution(solution_input)
     print(result)""")
 
-        print(f"File '{file_name}' created successfully.")
+        print(f"File '{file_name}' created in {path} successfully.")
 
 
 def main(leet_code_name):
@@ -43,5 +43,9 @@ def main(leet_code_name):
 
 
 if __name__ == '__main__':
-    leet_code_name = "Running Sum of 1d Array"
+    leet_code_name = "total levels in binary tree height"
     main(leet_code_name)
+
+
+
+
