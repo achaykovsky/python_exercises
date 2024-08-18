@@ -1,7 +1,3 @@
-Here's a `README.md` for your GitHub repository for Python LeetCode questions:
-
----
-
 # Python LeetCode Solutions
 
 Welcome to the Python LeetCode Solutions repository! This project is organized to provide multiple possible solutions for various LeetCode problems, with a focus on Python implementations.
