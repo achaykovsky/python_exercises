@@ -1,7 +1,8 @@
-# This is a generic file for the trivial solution
 from typing import List
 
 
+# Time Complexity: O(logn)
+# Space Complexity: O(1)
 def search(nums: List[int], target: int) -> int:
     l, r = 0, len(nums) - 1
     result = -1
