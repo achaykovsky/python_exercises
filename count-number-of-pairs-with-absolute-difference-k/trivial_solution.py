@@ -1,6 +1,7 @@
 from typing import List
 
-
+# Time Complexity: O(n^2)
+# Space Complexity: O(1)
 def solution(nums: List[int], k: int) -> int:
     result = 0
     for i in range(len(nums)):
