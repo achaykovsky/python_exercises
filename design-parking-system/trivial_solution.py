@@ -1,5 +1,5 @@
-# This is a generic file for the trivial solution
 from enum import Enum
+
 
 class Size(Enum):
     BIG = 0
