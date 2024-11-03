@@ -1,8 +1,6 @@
-# This is a generic file for the trivial solution
 from collections import defaultdict
 
-
-# Time complexity: O(n) Space Complexity: O()
+# Time complexity: O(n) Space Complexity: O(1)
 def fibonacci(n: int) -> int:
     sum = 0
     i1, i2 = 0, 1
