@@ -13,14 +13,19 @@ class TreeNode:
         self.right = right
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+
 def levelOrder(root: Optional[TreeNode]) -> List[List[int]]:
     result = []
 
-    def calculate_order(root, result, level) -> [List[int]]:
+    def calculate_order(root: Optional[TreeNode], result: List[int], level: int) -> List[List[int]]:
         if not root:
             return []
 
-        if len(result) == level:
+        if len(result) == level:  # validates the result list already has a list allocated for the current level
+            # result should be level + 1, so we add a new level if they are equal
+            # example: for a binary tree with only the root, we have level 0
             result.append([])
         result[level].append(root.val)
 
