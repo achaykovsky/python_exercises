@@ -1,4 +1,3 @@
-# This is a generic file for the trivial solution
 from collections import deque
 from typing import Optional
 
