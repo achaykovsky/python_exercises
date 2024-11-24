@@ -1,15 +1,19 @@
+# pramp question
+
+# Time Complexity: O(n)
+# Space Complexity: O(n)
 def inorder_traverse(root):
     nodes_list = []
 
-    def traverse(root, nodes_list):
+    def traverse(root):
         if not root:
             return
 
-        traverse(root.left, nodes_list)
+        traverse(root.left)
         nodes_list.append(root)
-        traverse(root.right, nodes_list)
+        traverse(root.right)
 
-    traverse(root, nodes_list)
+    traverse(root)
 
     return nodes_list
 
