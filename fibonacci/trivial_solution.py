@@ -1,6 +1,7 @@
 # This is a generic file for the trivial solution
 
-# Time complexity: O(2^n) Space Complexity: O(n)
+# Time complexity: O(2^n)
+# Space Complexity: O(n)
 def fibonacci(n: int) -> int:
     if n <= 1:
         return n
