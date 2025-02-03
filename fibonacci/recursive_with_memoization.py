@@ -2,7 +2,8 @@
 from collections import defaultdict
 
 
-# Time complexity: O(n) Space Complexity: O(n)
+# Time complexity: O(n)
+# Space Complexity: O(n)
 def fibonacci(n: int) -> int:
     memo = defaultdict(lambda: -1)  # initializing the memo with -1
     memo[0], memo[1] = 0, 1
@@ -20,6 +21,6 @@ def fibonacci(n: int) -> int:
 
 
 if __name__ == '__main__':
-    n = 6
+    n = 100
     result = fibonacci(n)
     print(result)
