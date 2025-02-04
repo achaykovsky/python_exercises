@@ -1,6 +1,7 @@
 from collections import defaultdict
 
-# Time complexity: O(n) Space Complexity: O(1)
+# Time complexity: O(n)
+# Space Complexity: O(1)
 def fibonacci(n: int) -> int:
     sum = 0
     i1, i2 = 0, 1
@@ -19,6 +20,6 @@ def fibonacci(n: int) -> int:
 
 
 if __name__ == '__main__':
-    n = 5
+    n = 100
     result = fibonacci(n)
     print(result)
