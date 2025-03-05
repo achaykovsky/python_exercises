@@ -14,9 +14,10 @@ from typing import List
 # 101 = 1 01
 # 110 = 1 10
 # 111 = 1 11
-
 # and so on
 
+
+# Counting the bits of all the numbers from 0 to n
 def countBits(n: int) -> List[int]:
     result = [0] * (n + 1)
     off = 1  # offset
