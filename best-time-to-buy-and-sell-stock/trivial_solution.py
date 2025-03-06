@@ -1,12 +1,13 @@
 # This is a generic file for the trivial solution
 from typing import List
 
+
 # Time Complexity: O(n^2)
 # Space Complexity: O(n)
 def maxProfit(prices: List[int]) -> int:
     maximum_list = []
     for i, price in enumerate(prices):
-        maximum_rest_array = max(prices[i:])
+        maximum_rest_array = max(prices[i:])  # O(n)
         diff = maximum_rest_array - price
         if diff > 0:
             maximum_list.append(diff)
