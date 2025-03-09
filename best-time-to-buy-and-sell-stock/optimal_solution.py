@@ -1,6 +1,7 @@
 # This is a generic file for the trivial solution
 from typing import List
 
+
 # Time Complexity: O(n)
 # Space Complexity: O(1)
 def maxProfit(prices: List[int]) -> int:
