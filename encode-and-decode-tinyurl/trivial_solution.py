@@ -1,4 +1,3 @@
-# This is a generic file for the trivial solution
 from collections import defaultdict
 
 
@@ -8,6 +7,8 @@ class Codec:
         self.decoding_dict = defaultdict(str)
         self.base = "http://tinyurl.com/"
 
+    # Time Complexity: O(1)
+    # Space Complexity: O(n)
     def encode(self, longUrl: str) -> str:
         """Encodes a URL to a shortened URL.
         """
@@ -16,11 +17,13 @@ class Codec:
             hashed = len(self.encoding_dict) + 1
             short_url = self.base + str(hashed)
 
-            # update the decoding dict as well for future retrieval
+            # update the dicts as well for future retrieval
             self.decoding_dict[short_url] = longUrl
+            self.encoding_dict[longUrl] = short_url
+            return self.encoding_dict[longUrl]
 
-            return short_url
-
+    # Time Complexity: O(1)
+    # Space Complexity: O(1)
     def decode(self, shortUrl: str) -> str:
         """Decodes a shortened URL to its original URL.
         """
