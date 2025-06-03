@@ -1,3 +1,4 @@
+import logging
 import os
 
 """Insert the name of the LeetCode question to create a new folder for the solutions"""
@@ -16,24 +17,28 @@ def create_new_folder(new_name):
 
 
 def create_python_trivial_solution(path):
-    # Specify the file name and path
     file_name = "trivial_solution.py"
-    full_path = path + '\\' + file_name
+    full_path = os.path.join(path, file_name)
 
-    # Open the file in write mode
-    with open(full_path, 'w') as file:
-        # Write content to the file
-        file.write("# This is a generic file for the trivial solution\n\n")
-        file.write("""def solution(solution_input):
+    if os.path.exists(full_path):
+        logging.error(f"File '{file_name}' already exists in: {path}")
+        return
+
+    try:
+        with open(full_path, 'w') as file:
+            file.write("# This is a generic file for the trivial solution\n\n")
+            file.write("""def solution(solution_input):
     result = []
     return result\n\n\n""")
 
-        file.write("""if __name__ == '__main__':
+            file.write("""if __name__ == '__main__':
     solution_input = []
     result = solution(solution_input)
     print(result)""")
 
-        print(f"File '{file_name}' created in {path} successfully.")
+        logging.info(f"File '{file_name}' created in {path} successfully.")
+    except Exception as e:
+        logging.error(f"Failed to create file '{file_name}' in {path}: {e}")
 
 
 def main(leet_code_name):
@@ -43,9 +48,5 @@ def main(leet_code_name):
 
 
 if __name__ == '__main__':
-    leet_code_name = "total levels in binary tree height"
+    leet_code_name = "Unique Paths"
     main(leet_code_name)
-
-
-
-
