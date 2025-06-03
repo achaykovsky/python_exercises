@@ -1,19 +1,26 @@
 import logging
 import os
 
+logging.basicConfig(level=logging.INFO)
+
 """Insert the name of the LeetCode question to create a new folder for the solutions"""
 
 
 def create_new_folder(new_name):
     current_directory = os.getcwd()
-
-    path = current_directory + '\\' + new_name
-
     folder_path = os.path.join(current_directory, new_name)
 
-    os.makedirs(folder_path, exist_ok=True)
+    try:
+        os.makedirs(folder_path, exist_ok=False)
+        logging.info(f"Folder '{new_name}' created at: {folder_path}")
+    except FileExistsError:
+        logging.error(f"Folder '{new_name}' already exists at: {folder_path}")
+        raise
+    except Exception as e:
+        logging.error(f"Unexpected error while creating folder '{new_name}': {e}")
+        raise
 
-    return path
+    return folder_path
 
 
 def create_python_trivial_solution(path):
@@ -42,9 +49,16 @@ def create_python_trivial_solution(path):
 
 
 def main(leet_code_name):
+    logging.info(f"Starting setup for LeetCode problem: '{leet_code_name}'")
+
     new_name = leet_code_name.lower().replace(' ', '-')
+    logging.info(f"Normalized folder name: '{new_name}'")
+
     path = create_new_folder(new_name)
+    logging.info(f"Folder created at path: {path}")
+
     create_python_trivial_solution(path)
+    logging.info(f"Trivial Python solution created inside folder: {path}")
 
 
 if __name__ == '__main__':
