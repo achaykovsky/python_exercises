@@ -10,38 +10,23 @@ class BinaryTreeNode:
         self.right = right
 
 
-def build_binary_tree(arr):
-    """
-    Function to build a tree from a given array.
-    arr: List of elements to insert in the tree.
-    Returns the root of the constructed tree.
-    """
+def build_binary_tree(arr: [int]) -> Optional[BinaryTreeNode]:
     if not arr:
         return None
 
-    root = BinaryTreeNode(arr[0])
-    queue = deque([root])
-
-    i = 1
-    while queue and i < len(arr):
-        current = queue.popleft()
-
-        # Insert left child
-        if i < len(arr) and arr[i] is not None:
-            current.left = BinaryTreeNode(arr[i])
-            queue.append(current.left)
-        i += 1
-
-        # Insert right child
-        if i < len(arr) and arr[i] is not None:
-            current.right = BinaryTreeNode(arr[i])
-            queue.append(current.right)
-        i += 1
-
-    return root
+    nodes = [BinaryTreeNode(val) if val is not None else None for val in arr]
+    for i in range(len(arr)):
+        if nodes[i] is not None:
+            left_i = 2 * i + 1
+            right_i = 2 * i + 2
+            if left_i < len(arr):
+                nodes[i].left = nodes[left_i]
+            if right_i < len(arr):
+                nodes[i].right = nodes[right_i]
+    return nodes[0]
 
 
-def print_binary_tree_inorder(root):
+def print_binary_tree_inorder(root: Optional[BinaryTreeNode]):
     """
     Function to print the tree in inorder traversal.
     """
@@ -79,22 +64,36 @@ def print_tree_top_down(root: Optional[BinaryTreeNode]):
 
     while q:
         node, row, col = q.popleft()
-        # Ensure row exists
         while len(levels[row]) < max_width:
             levels[row].append(" ")
         levels[row][col] = str(node.val)
 
+        # Calculate offset based on depth level
+        level = row // 2
+        gap = 2 ** (depth - level - 2)  # dynamic gap shrinking each level down
+
         if node.left:
-            if len(levels[row + 1]) < max_width:
-                levels[row + 1] = [" "] * max_width
-            levels[row + 1][col - 1] = "/"
-            q.append((node.left, row + 2, col - 2))
+            while len(levels[row + 1]) < max_width:
+                levels[row + 1].append(" ")
+            levels[row + 1][col - gap] = "/"
+            q.append((node.left, row + 2, col - gap * 2))
 
         if node.right:
-            if len(levels[row + 1]) < max_width:
-                levels[row + 1] = [" "] * max_width
-            levels[row + 1][col + 1] = "\\"
-            q.append((node.right, row + 2, col + 2))
+            while len(levels[row + 1]) < max_width:
+                levels[row + 1].append(" ")
+            levels[row + 1][col + gap] = "\\"
+            q.append((node.right, row + 2, col + gap * 2))
 
     for line in levels:
         print("".join(line).rstrip())
+
+
+def find_node(root: BinaryTreeNode, val: int) -> Optional[BinaryTreeNode]:
+    if not root:
+        return None
+    if root.val == val:
+        return root
+    left = find_node(root.left, val)
+    if left:
+        return left
+    return find_node(root.right, val)
