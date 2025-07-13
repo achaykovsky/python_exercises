@@ -2,7 +2,7 @@ from typing import List
 
 
 # Time Complexity: O(n^3)
-# Space Complexity: O(n^3)
+# Space Complexity: O(n^2)
 def threeSum(nums: List[int]) -> List[List[int]]:
     result = set()
     num_length = len(nums)
