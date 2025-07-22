@@ -14,15 +14,15 @@ def coinChange(coins: List[int], amount: int) -> int:
     visited = set()
 
     while queue:
-        current_sum, steps = queue.popleft()
+        current_sum, steps = queue.popleft()  # Dequeue the first element
 
         for coin in coins:
             new_sum = current_sum + coin
 
-            if new_sum == amount:
+            if new_sum == amount:  # Found a solution
                 return steps + 1
 
-            if new_sum < amount and new_sum not in visited:
+            if new_sum < amount and new_sum not in visited:  # Avoid revisiting
                 visited.add(new_sum)
                 queue.append((new_sum, steps + 1))
 
