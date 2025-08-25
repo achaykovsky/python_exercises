@@ -2,6 +2,7 @@ from typing import List
 
 
 # Trivial solution for the Candy problem
+
 # Time Complexity: O(n^2) in worst case
 # Space Complexity: O(n)
 def candy(ratings: List[int]) -> int:
