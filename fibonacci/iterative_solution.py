@@ -1,12 +1,10 @@
-from collections import defaultdict
-
 # Time complexity: O(n)
 # Space Complexity: O(1)
 def fibonacci(n: int) -> int:
     sum = 0
     i1, i2 = 0, 1
 
-    if n <= 1:  # if the n=1 or n=0 - nothing to calculate
+    if n <= 1:  # if the n=1 or n=0 => nothing to calculate
         return n
 
     # calculating starting 2
