@@ -1,3 +1,5 @@
+# Time Complexity: O(n)
+# Space Complexity: O(n)
 def defangIPaddr(address):
     """
     :type address: str
