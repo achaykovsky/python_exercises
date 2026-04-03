@@ -1,11 +1,5 @@
-# This is a generic file for the trivial solution
 import heapq
 from typing import List
-
-
-def solution(solution_input):
-    result = []
-    return result
 
 
 class KthLargest:
@@ -24,8 +18,6 @@ class KthLargest:
 
 
 if __name__ == '__main__':
-    # Your KthLargest object will be instantiated and called as such:
-
     nums = [4, 5, 8, 2]
     obj = KthLargest(3, nums)
     param_1 = obj.add(val=5)
