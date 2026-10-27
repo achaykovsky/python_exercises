@@ -19,7 +19,7 @@ def search(txt: str, pattern: str) -> List[int]:
 
 
 if __name__ == '__main__':
-    haystack = "sadbutsad"
-    needle = "sad"
+    haystack = "cbaebabacd"
+    needle = "abc"
     result = search(haystack, needle)
     print(result)
